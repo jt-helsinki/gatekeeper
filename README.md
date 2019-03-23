@@ -5,11 +5,11 @@ a username and password and if the credentials match then it returns a JSON Web 
 ## Endpoints
 
 ### Login
-__/login__
+__/login__  
 Accepts a clear text username and password in the request body. Returns a JSON webtoken if the credentials are valid. 
 
 ### Logout
-__/logout__
+__/logout__  
 Invalidates the session associated with the JWT
 
 ## Session Cache
