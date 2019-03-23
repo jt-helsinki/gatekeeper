@@ -1,4 +1,4 @@
-# gatekeeper
+# Gatekeeper - a session management micro service
 A simple user session micro-service using AWS Lambda, Redis and Typescript. This service simply allows a client to submit 
 a username and password and if the credentials match then it returns a JSON Web Token (JWT). 
 
