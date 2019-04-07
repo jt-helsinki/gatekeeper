@@ -33,7 +33,6 @@ export class Authenticator {
             return undefined;
         }
         const user: User = await this.database.findByKey<User>(credentials.username);
-        console.log("***", user, await PasswordCrypter.doesStringMatchHash(credentials.password, user.password))
         if (!user || !await PasswordCrypter.doesStringMatchHash(credentials.password, user.password)) {
             return undefined;
         }

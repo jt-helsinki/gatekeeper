@@ -38,7 +38,6 @@ export class UserDynamoDB implements Database {
         return new Promise<T>((ok: any, fail: any) => {
             if (!keyValue) return ok(undefined);
             this.dynamoDb.getItem(params, (err: AWSError, data: DynamoDB.Types.GetItemOutput): void => {
-                console.log("as****", data, params);
                 if (err) return fail(err);
                 if (Object.entries(data).length === 0) return ok(undefined);
                 ok(attr.unwrap(data.Item));
