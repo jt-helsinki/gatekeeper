@@ -32,7 +32,7 @@ phases:
       - npm run docker-start
   build:
     commands:
-      - npm run test
+      - npm run jasmine
   post_build:
     commands:
       - npm run docker-stop

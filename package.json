@@ -11,14 +11,14 @@
     "docker-compose-start": "docker-compose up",
     "docker-compose-stop": "docker-compose down",
     "docker-start": "npm run dynamodb-start; npm run redis-start",
-    "docker-stop": "npm run dynamodb-stop; npm run redis-stop",
+    "docker-stop": "npm run dynamodb-stop; npm run redis-stop; npm run docker-remove-container",
     "docker-remove-container": "npm run dynamodb-remove-container; npm run redis-remove-container",
     "dynamodb-start": "docker run -d -p 7999:8000 --name=dynamodb-gatekeeper-testing amazon/dynamodb-local",
     "dynamodb-stop": "docker stop $(docker ps --filter status=running --filter name=dynamodb-gatekeeper-testing --format \"{{.ID}}\")",
-    "dynamodb-remove-container": "docker rm $(docker ps --filter status=exited --filter name=dynamodb-gatekeeper-testing --format \"{{.ID}}\")",
+    "dynamodb-remove-container": "docker rm $(docker ps --filter status=exited --filter name=dynamodb-gatekeeper-testing --format \"{{.ID}}\") || true",
     "redis-start": "docker run -d -p 6378:6379 --name=redis-gatekeeper-testing redis",
     "redis-stop": "docker stop $(docker ps --filter status=running --filter name=redis-gatekeeper-testing --format \"{{.ID}}\")",
-    "redis-remove-container": "docker rm $(docker ps --filter status=exited --filter name=redis-gatekeeper-testing --format \"{{.ID}}\")",
+    "redis-remove-container": "docker rm $(docker ps --filter status=exited --filter name=redis-gatekeeper-testing --format \"{{.ID}}\") || true",
     "redis-commander": "redis-commander --redis-port 6379"
   },
   "dependencies": {
