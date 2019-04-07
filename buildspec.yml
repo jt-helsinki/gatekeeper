@@ -15,7 +15,7 @@ phases:
       - nodejs --version
       - npm --version
       - echo "******* serverless.yml ********"
-      - mv serverless.yml.dist serverless.yml
+      - cp serverless.yml.dist serverless.yml
       - sed -i -e "s/ENVIRONMENT_PLACEHOLDER/${ENVIRONMENT}/g" serverless.yml
       - sed -i -e "s/SECRET_KEY_PLACEHOLDER/${SECRET_KEY}/g" serverless.yml
       - sed -i -e "s/REGION_PLACEHOLDER/${REGION}/g" serverless.yml
