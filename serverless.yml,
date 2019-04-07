@@ -1,0 +1,61 @@
+service:
+  name: gatekeeper
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-central-1
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "states:StartExecution"
+      Resource:
+        - "*"
+
+environment:
+  ENVIRONMENT: dev
+  SECRET_KEY: $2b$12$8SNfR92luvJxLtxYgnnTuO
+  REDIS_URL: redis://127.0.0.1
+  REDIS_PORT: 6379
+
+package:
+  exclude:
+    - node_modules/**/*
+    - .idea/**
+    - .serverless/**
+    - test/**
+    - venv/**
+    - requirements.txt
+    - serverless.yml
+    - serverless.yml.dist
+    - node_modules/**
+    - README.md
+    - LICENSE.txt
+    - gatekeeper.iml
+    - setup.py
+    - .gitignore/**
+    - .nyc_output/**
+    - .webpack/**
+    - activate/**
+    - coverage/**
+    - .env
+  include:
+    src/handler.ts
+
+functions:
+  login:
+    handler: src/handler.login
+    events:
+      - http:
+          method: post
+          path: /gatekeeper/login
+  logout:
+    handler: src/handler.logout
+    events:
+      - http:
+          method: get
+          path: /gatekeeper/logout
