@@ -1,0 +1,38 @@
+version: 0.2
+# AWS CodeBuild spec.
+# See : https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
+env:
+  variables:
+    SLS_DEBUG: "*"
+phases:
+  install:
+    commands:
+      - docker pull amazon/dynamodb-local
+      - docker pull redis
+      - docker run -d -p 7999:8000 amazon/dynamodb-local
+      - docker run -d -p 6378:6379 redis
+      - nodejs --version
+      - npm --version
+      - npm install
+      - npm install -g serverless
+      - mv serverless.yml.dist serverless.yml
+      - sed -i "s/ENVIRONMENT_PLACEHOLDER/${ENVIRONMENT_PRODUCTION}/g" serverless.yml
+      - sed -i "s/SECRET_KEY_PLACEHOLDER/${SECRET_KEY_PRODUCTION}/g" serverless.yml
+      - sed -i "s/REGION_PLACEHOLDER/${REGION_PRODUCTION}/g" serverless.yml
+      - sed -i "s/REDIS_PORT_PLACEHOLDER/${REDIS_PORT_PRODUCTION}/g" serverless.yml
+      - sed -i "s/REDIS_URL_PLACEHOLDER/${REDIS_URL_PRODUCTION}/g" serverless.yml
+      - echo "******* serverless.yml ********"
+      - cat serverless.yml
+      - echo "***** end serverless.yml ******"
+  pre_build:
+    commands:
+      - npm run docker-start
+  build:
+    commands:
+      - npm run test
+  post_build:
+    commands:
+      - npm run docker-stop
+      - npm run docker-remove-container
+      - sls deploy
+      - exit $?

@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "es5",
+            "es6",
+            "dom",
+            "es2015",
+            "esnext.asynciterable",
+            "es2017"
+        ],
+        "moduleResolution": "node",
+        "target": "es2017",
+        "outDir": "lib",
+        "rootDir": ".",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "pretty": true,
+        "noEmit": false,
+        "sourceMap": true
+    },
+    "exclude": [
+        "node_modules",
+        "build",
+        ".webpack",
+        ".idea",
+        ".nyc_output",
+        ".serverless",
+        "venv",
+        "coverage",
+        "activate"
+    ]
+}

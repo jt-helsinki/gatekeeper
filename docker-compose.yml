@@ -1,0 +1,10 @@
+version: '3'
+services:
+    redis:
+        image: redis:5.0.4
+        ports:
+            - 6379:6379
+    dynamo-db:
+        image: amazon/dynamodb-local
+        ports:
+            - 8000:8000
