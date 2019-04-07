@@ -3,7 +3,7 @@ version: 0.2
 # See : https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
 env:
   variables:
-    SLS_DEBUG: "*"
+    SLS_DEBUG: "1"
     REGION: "eu-west-1"
     ENVIRONMENT: "test"
     REDIS_PORT: "6378"
