@@ -48,7 +48,7 @@ export const logout: APIGatewayProxyHandler = async (event: APIGatewayEvent, con
     const authenticator: Authenticator = new Authenticator(cache, database);
     // const jwt: string | undefined = await authenticator.logout();
 
-    return { 
+    return {
         statusCode: 200,
         headers: {
             'Authorization': 'Bearer'
