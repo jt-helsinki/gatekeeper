@@ -2,12 +2,14 @@ service:
   name: gatekeeper
 
 plugins:
+  - serverless-plugin-typescript
   - serverless-webpack
   - serverless-offline
 provider:
   name: aws
-  runtime: nodejs8.10
-  region: eu-central-1
+  runtime: nodejs10.14.1
+  stage: ENVIRONMENT_PLACEHOLDER
+  region: REGION_PLACEHOLDER
   environment:
     TABLE_NAME: TABLE_NAME_PLACEHOLDER
     ENVIRONMENT: ENVIRONMENT_PLACEHOLDER
@@ -44,6 +46,11 @@ package:
   include:
     - src/handler.ts
     - node_modules/**/*
+
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.js'
+    includeModules: true
 
 functions:
   login:

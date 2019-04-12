@@ -1,7 +1,11 @@
 {
   "name": "gatekeeper",
   "version": "1.0.0",
-  "description": "Serverless webpack example using Typescript",
+  "description": "A simple AWS Lambda service which authenticates a username/password and returns a JWT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jt-helsinki/gatekeeper.git"
+  },
   "main": "handler.js",
   "scripts": {
     "start": "export SLS_DEBUG=*; export ENVIRONMENT=dev; export SECRET_KEY=0ca0c6f1a981458fba337554e85196cc; serverless offline start",
@@ -54,6 +58,5 @@
     "webpack": "^4.29.0",
     "webpack-node-externals": "^1.7.2"
   },
-  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
   "license": "MIT"
 }
