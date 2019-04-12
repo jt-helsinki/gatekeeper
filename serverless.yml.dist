@@ -23,7 +23,6 @@ webpack:
 
 package:
   exclude:
-    - node_modules/**/*
     - .idea/**
     - .serverless/**
     - test/**
@@ -43,7 +42,8 @@ package:
     - coverage/**
     - .env
   include:
-    src/handler.ts
+    - src/handler.ts
+    - node_modules/**/*
 
 functions:
   login:
