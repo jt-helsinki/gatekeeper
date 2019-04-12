@@ -48,5 +48,4 @@ phases:
       - sed -i -e "s#REDIS_URL_PLACEHOLDER#${REDIS_URL_PRODUCTION}#g" serverless.yml
       - sed -i -e "s#TABLE_NAME_PLACEHOLDER#${TABLE_NAME_PRODUCTION}#g" serverless.yml
       - sls deploy  --stage production
-      - exit $?
 
