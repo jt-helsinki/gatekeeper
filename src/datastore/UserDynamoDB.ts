@@ -14,9 +14,9 @@ export interface ConnectionOptions {
 
 export class UserDynamoDB implements Database {
 
-    public static readonly TABLE_NAME: string = 'USERS';
+    public static readonly TABLE_NAME: string = process.env.TABLE_NAME as string;
 
-    public static readonly KEY_NAME: string = 'ID';
+    public static readonly KEY_NAME: string = 'id';
 
     private dynamoDb: DynamoDB;
 

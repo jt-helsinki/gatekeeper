@@ -5,8 +5,8 @@
   "main": "handler.js",
   "scripts": {
     "start": "export SLS_DEBUG=*; export ENVIRONMENT=dev; export SECRET_KEY=0ca0c6f1a981458fba337554e85196cc; serverless offline start",
-    "test": "npm run docker-start; export SLS_DEBUG=*; export ENVIRONMENT=test; export SECRET_KEY=0ca0c6f1a981458fba337554e85196cc&& nyc  -r lcov -e .ts -x \"./test/**/*.test.ts\" jasmine-ts --config=./jasmine.json \"./test/**/*.test.ts\"; npm run docker-stop; npm run docker-remove-container",
-    "jasmine": "export SLS_DEBUG=*; export ENVIRONMENT=test; export SECRET_KEY=0ca0c6f1a981458fba337554e85196cc&& jasmine-ts --config=./jasmine.json \"./test/**/*.test.ts\"",
+    "test": "npm run docker-start; export SLS_DEBUG=*; export TABLE_NAME=gatekeeper-users-test; export ENVIRONMENT=test; export SECRET_KEY=0ca0c6f1a981458fba337554e85196cc&& nyc  -r lcov -e .ts -x \"./test/**/*.test.ts\" jasmine-ts --config=./jasmine.json \"./test/**/*.test.ts\"; npm run docker-stop; npm run docker-remove-container",
+    "test-aws-codebuild": "jasmine-ts --config=./jasmine.json \"./test/**/*.test.ts\"",
     "create-dev-user": "export SLS_DEBUG=*; export ENVIRONMENT=dev; export SECRET_KEY=0ca0c6f1a981458fba337554e85196cc&& jasmine-ts --config=./jasmine.dev.json \"./test/development/CreateDevUser.dev.ts\"",
     "docker-compose-start": "docker-compose up",
     "docker-compose-stop": "docker-compose down",
