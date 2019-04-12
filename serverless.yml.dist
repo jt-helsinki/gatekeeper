@@ -2,7 +2,6 @@ service:
   name: gatekeeper
 
 plugins:
-  - serverless-plugin-typescript
   - serverless-webpack
   - serverless-offline
 provider:
@@ -51,6 +50,8 @@ custom:
   webpack:
     webpackConfig: 'webpack.config.js'
     includeModules: true
+    package:
+      individually: true
 
 functions:
   login:
