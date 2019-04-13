@@ -23,6 +23,7 @@ phases:
       - sed -i -e "s/REDIS_PORT_PLACEHOLDER/${REDIS_PORT}/g" serverless.yml
       - sed -i -e "s#REDIS_URL_PLACEHOLDER#${REDIS_URL}#g" serverless.yml
       - sed -i -e "s#TABLE_NAME_PLACEHOLDER#${TABLE_NAME}#g" serverless.yml
+      - sed -i -e "s#POLICY_PLACEHOLDER#${POLICY}#g" serverless.yml
       - cat serverless.yml
       - echo "***** end serverless.yml ******"
       - docker pull amazon/dynamodb-local
@@ -45,6 +46,7 @@ phases:
       - sed -i -e "s/REDIS_PORT_PLACEHOLDER/${REDIS_PORT_PRODUCTION}/g" serverless.yml
       - sed -i -e "s#REDIS_URL_PLACEHOLDER#${REDIS_URL_PRODUCTION}#g" serverless.yml
       - sed -i -e "s#TABLE_NAME_PLACEHOLDER#${TABLE_NAME_PRODUCTION}#g" serverless.yml
+      - sed -i -e "s#POLICY_PLACEHOLDER#${POLICY_PRODUCTION}#g" serverless.yml
       - echo "******* serverless.yml ********"
       - cat serverless.yml
       - echo "***** end serverless.yml ******"

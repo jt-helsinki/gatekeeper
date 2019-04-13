@@ -6,9 +6,11 @@ plugins:
   - serverless-offline
 provider:
   name: aws
-  runtime: nodejs10.14.1
+  runtime: nodejs8.10
   stage: ENVIRONMENT_PLACEHOLDER
   region: REGION_PLACEHOLDER
+  iamManagedPolicies:
+    - POLICY_PLACEHOLDER
   environment:
     TABLE_NAME: TABLE_NAME_PLACEHOLDER
     ENVIRONMENT: ENVIRONMENT_PLACEHOLDER
